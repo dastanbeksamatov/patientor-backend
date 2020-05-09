@@ -1,5 +1,5 @@
 import patientsData from '../data/patients';
-import { PatientEntry, Patient } from '../types';
+import { PatientEntry, Patient, newPatient } from '../types';
 import { toNewEntry } from './utils';
 
 const patients: Array<PatientEntry> = patientsData;

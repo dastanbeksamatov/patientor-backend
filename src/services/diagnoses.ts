@@ -1,4 +1,4 @@
-import diagnoseData from '../data/diagnoses.ts';
+import diagnoseData from '../data/diagnoses';
 import { DiagnoseEntry } from '../types';
 
 const getDiagnoses = (): Array<DiagnoseEntry> => {

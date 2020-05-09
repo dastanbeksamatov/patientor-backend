@@ -1,13 +1,12 @@
 import express from 'express';
-import { Patient, newPatient } from '../types';
 import patientsService from '../services/patients';
 const router = express.Router();
 
-router.get('/', (_req, res): Array<Patient> => {
+router.get('/', (_req, res)=> {
   res.send(patientsService.getSensitivePatients());
 });
 
-router.get('/:id', (req, res): Patient => {
+router.get('/:id', (req, res) => {
   const patient = patientsService.findById(req.params.id);
   if(patient){
     res.send(patient);
@@ -17,7 +16,7 @@ router.get('/:id', (req, res): Patient => {
   }
 });
 
-router.post('/', (req, res): newPatient => {
+router.post('/', (req, res)=> {
   try{
     const newPatient = patientsService.addPatient(req.body);
     res.send(newPatient);

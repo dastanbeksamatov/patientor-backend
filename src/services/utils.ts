@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {Gender, PatientEntry } from '../types';
 
-const isGender = (param: any): param is Weather => {
+const isGender = (param: any): param is Gender => {
   return Object.values(Gender).includes(param);
 };
 
@@ -13,7 +13,7 @@ const isString = (text: any): text is string => {
   return typeof text === 'string' || text instanceof String;
 };
 
-const parseDate = (date: any): date is date =>{
+const parseDate = (date: any): string =>{
   if(!date || !isDate(date) || !isString(date)){
     throw new Error('missing or invalid date' + date);
   }
