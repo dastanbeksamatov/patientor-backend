@@ -9,20 +9,27 @@ const getPatients = (): PatientEntry[] => {
 };
 
 const getSensitivePatients = (): Patient[]  => {
-  return patients.map(({ id, name, dateOfBirth, gender, occupation }) => {
+  return patients.map(({ id, name, dateOfBirth, gender, occupation, entries }) => {
     return {
       id,
       name,
       dateOfBirth,
       gender,
-      occupation
+      occupation,
+      entries
     };
   });
 };
 
 const findById = (id: string): Patient | undefined => {
   const patient = patients.find(patient => patient.id === id);
-  return patient;
+  return {
+    name: patient.name,
+    dateOfBirth: patient.dateOfBirth,
+    gender: patient?.gender,
+    occupation: patient?.occupation,
+    entries: patient.entries
+  };
 };
 
 const addPatient = (patient: newPatient): PatientEntry => {

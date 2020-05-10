@@ -6,6 +6,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 const PORT = 3001;
+// for json indentation
+app.set('json spaces', 2);
 
 app.get('/api/ping', (_req, res) => {
   console.log('app running');
