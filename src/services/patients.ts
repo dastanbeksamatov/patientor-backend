@@ -1,6 +1,6 @@
 import patientsData from '../data/patients';
-import { PatientEntry, Patient, newPatient } from '../types';
-import { toNewEntry } from './utils';
+import { PatientEntry, Patient, newPatient, newEntry } from '../types';
+import { toNewPatientEntry, toNewHealtcheckEntry, toNewHospitalEntry, toNewOccupationalHealthcareEntry } from './utils';
 
 const patients: Array<PatientEntry> = patientsData;
 
@@ -33,14 +33,31 @@ const findById = (id: string): Patient | undefined => {
 };
 
 const addPatient = (patient: newPatient): PatientEntry => {
-  const newPatient = toNewEntry(patient);
+  const newPatient = toNewPatientEntry(patient);
   patients.push(newPatient);
   return newPatient;
+};
+
+const addEntry = (entry: newEntry): Entry => {
+  switch(entry.type){
+    case "HealthCheck":
+      const e = toNewHealtcheckEntry(entry);
+      return e;
+    case "Hospital":
+      const h = toNewHospitalEntry(entry);
+      return h;
+    case "OccupationalHealthcare":
+      const o = toNewOccupationalHealthcareEntry(entry);
+      return o;
+    default:
+      return null;
+  }
 };
 
 export default {
   getPatients,
   getSensitivePatients,
   addPatient,
-  findById
+  findById,
+  addEntry
 };
